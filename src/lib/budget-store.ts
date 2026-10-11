@@ -87,7 +87,7 @@ export const useBudget = create<State & Actions>()(
       contributeGoal: (id, amount) =>
         set((s) => ({ goals: s.goals.map((g) => (g.id === id ? { ...g, saved: Math.min(g.target, g.saved + amount) } : g)) })),
       nextDay: () => set((s) => ({ day: Math.min(TOTAL_DAYS, s.day + 1) })),
-      rollPlotTwist: () => set({ pendingTwist: PLOT_TWISTS[Math.floor(Math.random() * PLOT_TWISTS.length)] }),
+      rollPlotTwist: () => set({ pendingTwist: PLOT_TWISTS[Math.floor(Math.random() * PLOT_TWISTS.length)] ?? null }),
       dismissTwist: () => set({ pendingTwist: null }),
       resolveTwist: (mode) => {
         const t = get().pendingTwist;
