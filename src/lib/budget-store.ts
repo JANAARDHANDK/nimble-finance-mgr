@@ -132,7 +132,8 @@ export function computeMetrics(s: Snapshot, extraSpend = 0) {
   const safeDaily = Math.max(0, Math.floor(balance / daysLeft));
   const spentToday = s.expenses.filter((e) => e.day === s.day).reduce((a, e) => a + e.amount, 0) + extraSpend;
   // average variable burn so far (excluding today's partial if day 1)
-  const avgDaily = expenseTotal / Math.max(1, s.day);
+  const routine = s.expenses.filter((e) => e.category !== "surprise").reduce((a, e) => a + e.amount, 0) + extraSpend * 0;
+  const avgDaily = routine / Math.max(1, s.day);
   const projectedEnd = Math.round(balance - avgDaily * (TOTAL_DAYS - s.day));
   const bustDay = avgDaily > 0 && projectedEnd < 0 ? Math.min(TOTAL_DAYS, s.day + Math.floor(Math.max(0, balance) / avgDaily)) : null;
   const cashPct = Math.max(0, balance / s.startBalance);
