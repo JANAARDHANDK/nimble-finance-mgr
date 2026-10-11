@@ -113,7 +113,7 @@ export const useBudget = create<State & Actions>()(
       },
       skipPurchase: () => set((s) => ({ streak: s.streak + 5 })),
       setup: (start, goals) => set({ ...initial(start, goals), onboarded: true }),
-      resetMonth: () => set((s) => ({ ...initial(s.startBalance, s.goals.map((g) => ({ ...g, saved: 0 }))), onboarded: true })),
+      resetMonth: () => set((s) => ({ ...initial(DEFAULT_START, s.goals.map((g) => ({ ...g, saved: 0 }))), onboarded: true })),
     }),
     { name: "bbf-budget-v1", skipHydration: true },
   ),
@@ -129,7 +129,8 @@ export function computeMetrics(s: Snapshot, extraSpend = 0) {
   const spent = committed + expenseTotal;
   const balance = s.startBalance - spent - saved;
   const daysLeft = TOTAL_DAYS - s.day + 1;
-  const safeDaily = Math.max(0, Math.floor(balance / daysLeft));
+  const monthComplete = s.day >= TOTAL_DAYS;
+  const safeDaily = monthComplete ? 0 : Math.max(0, Math.floor(balance / daysLeft));
   const spentToday = s.expenses.filter((e) => e.day === s.day).reduce((a, e) => a + e.amount, 0) + extraSpend;
   // average variable burn so far (excluding today's partial if day 1)
   const routine = s.expenses.filter((e) => e.category !== "surprise").reduce((a, e) => a + e.amount, 0) + extraSpend * 0;
@@ -142,7 +143,13 @@ export function computeMetrics(s: Snapshot, extraSpend = 0) {
   const wants = s.expenses.filter((e) => e.kind === "want").reduce((a, e) => a + e.amount, 0);
   const wantShare = needs + wants > 0 ? wants / (needs + wants) : 0;
 
+  const goalsHit = s.goals.filter((g) => g.saved >= g.target).length;
+  const goalRatio = s.goals.length > 0 ? goalsHit / s.goals.length : 0;
+  const savedBonus = Math.min(1, saved / (s.startBalance * 0.15)) * 10;
+
   let health = 60 + (projectedEnd / s.startBalance) * 120 + (cashPct - timePct * 0.6) * 40 - Math.max(0, wantShare - 0.3) * 60;
+  // Goals & savings matter: hitting goals lifts the score, missing them drags it down
+  health += goalRatio * 25 - (1 - goalRatio) * 15 + savedBonus;
   if (balance <= 0) health = Math.min(health, 5);
   health = Math.round(Math.max(0, Math.min(100, health)));
 
@@ -150,7 +157,7 @@ export function computeMetrics(s: Snapshot, extraSpend = 0) {
     balance <= 0 || health < 25 ? "Critical" : health < 45 ? "High" : health < 70 ? "Medium" : "Low";
   const vibe = { Low: "Stable & Chill", Medium: "Tight but Okay", High: "Danger Zone", Critical: "Flatline" }[risk];
 
-  return { committed, saved, expenseTotal, spent, balance, daysLeft, safeDaily, spentToday, avgDaily, projectedEnd, bustDay, cashPct, timePct, needs, wants, wantShare, health, risk, vibe };
+  return { committed, saved, expenseTotal, spent, balance, daysLeft, monthComplete, safeDaily, spentToday, avgDaily, projectedEnd, bustDay, cashPct, timePct, needs, wants, wantShare, goalsHit, health, risk, vibe };
 }
 export type Metrics = ReturnType<typeof computeMetrics>;
 

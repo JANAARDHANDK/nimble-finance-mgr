@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AppShell, Card, HealthRing } from "@/components/app-ui";
-import { TOTAL_DAYS, inr, useBudget, useMetrics } from "@/lib/budget-store";
+import { DEFAULT_START, TOTAL_DAYS, inr, useBudget, useMetrics } from "@/lib/budget-store";
 
 export const Route = createFileRoute("/month-end")({
   head: () => ({
@@ -47,7 +47,7 @@ function MonthEnd() {
           ))}
         </ul>
       </Card>
-      <button onClick={() => { reset(); navigate({ to: "/" }); }} className="rounded-full bg-gradient-cta py-4 font-bold text-primary-foreground shadow-glow">Start Month 2 (New {inr(start)} Budget)</button>
+      <button onClick={() => { reset(); navigate({ to: "/" }); }} className="rounded-full bg-gradient-cta py-4 font-bold text-primary-foreground shadow-glow">Reset month (Day 1 · {inr(DEFAULT_START)})</button>
       <button onClick={() => navigate({ to: "/setup" })} className="py-2 text-sm text-outline">Change starting balance</button>
     </AppShell>
   );
