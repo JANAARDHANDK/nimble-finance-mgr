@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Icon } from "@/components/app-ui";
 import { cn } from "@/lib/utils";
-import { computeMetrics, inr, useBudget, useMetrics, type Category } from "@/lib/budget-store";
+import { inr, useBudget, useMetrics, type Category } from "@/lib/budget-store";
 
 export const Route = createFileRoute("/add")({
   head: () => ({
@@ -79,7 +79,7 @@ function AddExpense() {
           {inr(m.safeDaily)} → <span className={after.safeDaily < m.safeDaily * 0.8 ? "text-destructive" : "text-warning"}>{inr(after.safeDaily)}/day</span>
         </p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          {m.daysLeft} days left. Risk after this: <b>{computeMetrics.length ? after.risk : ""}</b> · Health {after.health}
+          {m.daysLeft} days left. Risk after this: <b>{after.risk}</b> · Health {after.health}
         </p>
       </div>
       <div className="mt-auto grid grid-cols-3 gap-2 pt-4">
