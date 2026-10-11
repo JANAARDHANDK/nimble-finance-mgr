@@ -1,39 +1,47 @@
-# Nimble Finance Mgr
+# Broke But Functional — Survive the Month
 
-Build this app using the HTML files referenced below. You can hotlink the images referenced in the HTML. The attached images are screenshots of the desired screens. Here are public links to the html of the screens which you should read and use to build the app:
+A mobile-first personal finance app for Gen Z that helps users manage a limited ₹10,000 budget over 30 days and simulate financial decisions before making them.
 
-1. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZGMzNTFlNmIwMzMyZWJjMWU5MjVlZTlmEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-2. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZGQ3ZjU0OGMwNTc2MzE3MmVkMTExM2YyEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-3. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZGQyYjZjNGYwN2M0YzkzMTQzMjJjZTllEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-4. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZjM0ODFhN2MwNzNhZWY3N2E2MmQ2ODJmEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-5. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZjNjMDExOWYwOTEwNGY3MGU2MGNlZjQzEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-6. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhhZjNlNDQyNDAwMzMyYzBlZDg0MzFlN2QwEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-7. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMDNkOGI2MzAwOTI1YzdlMWEyMWYzY2VhEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-8. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMGIzOWY4MDQwNWMyZmEwYjk4MGQ0YzI1EgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-9. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMGZkODlhZmMwN2M0ZDc3ZGI2MGMzY2UyEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-10. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMTQ4OTQwMGIwN2M0ZDc3ZGI2MGMzY2UyEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-11. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMWEzYWI5YzUwYTRjNGYxNDVhMmNkNjBkEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086
-12. https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzAwMDY1ZDhiMmNjMmExNGEwNWMyZmQ2Njc1MDhkNzFmEgsSBxDfj_fN1AMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTk2NTQ0ODk5MTc3NjI3Nzg3Mw&filename=&opi=89354086 Build this as a real working app using React, Tailwind and Zustand for shared state (not plain HTML). Use the linked screens as the design. Start with ₹10,000 for a 30-day month. All screens must read from one shared store, so when I add an expense, simulate a purchase or pause a subscription, the balance, safe daily allowance, risk level and health score update everywhere. Add a Next Day button, a Plot Twist random surprise expense button, and save data in the browser.
+**Live demo:** https://nimble-finance-mgr.lovable.app
 
-This project was built with [Lovable](https://lovable.dev).
+## Problem statement
+Help users manage ₹10,000 over 30 days by connecting income, balance, spending, commitments, savings goals, subscriptions, unexpected expenses, financial risk and financial health, so every decision has visible, interconnected consequences.
 
-**Live app**: https://nimble-finance-mgr.lovable.app
+## How the app covers the problem statement
+- **Income and balance:** starting ₹10,000 allowance (editable via "Change starting balance") and a live remaining balance on Home
+- **Spending:** Log Spend / Add Expense, recent spending list, Insights breakdown
+- **Daily allowance:** "safe per day" amount recalculated after every decision
+- **Commitments and subscriptions:** Plan tab with bills and subscriptions, each with a Pause to save action
+- **Savings goals:** Plan tab goals; goals hit and money saved feed the month-end score
+- **Unexpected expenses:** Plot Twist random events with response options
+- **Decision simulation:** Simulate tab with Before vs After for balance, allowance and forecast, a Safe/Risky verdict, and Do it / Skip it
+- **Monthly forecast:** forecast and survival pace on Home and Insights
+- **Financial risk:** risk status that reacts to spending pace
+- **Financial health:** health / survival score on Home and the Month-End report
 
-## Build with Lovable
+## Features
+- Onboarding with starting balance and goals
+- Home dashboard: balance, safe daily allowance, risk level, health score, recent spending
+- Decision Simulator with Before vs After comparison
+- Plan: bills, subscriptions, savings goals
+- Plot Twist unexpected expenses
+- Next Day control to step through the 30-day month
+- Insights charts
+- Month-End survival report with Reset month
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ce486513-27ba-5d17-ab38-05c80e841a1d).
+## Architecture
+- One shared Zustand store holds balance, day, transactions, commitments, subscriptions and goals.
+- Daily allowance, forecast, risk level and health score are derived from that store, so every screen updates together.
+- State is saved in the browser (localStorage).
+- Reusable components for cards, progress rings, badges, charts and bottom sheets.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+## Tech stack
+React, TypeScript, Tailwind CSS, Zustand, TanStack Start (Vite). Designed in Google Stitch and built with AI-assisted development (Lovable).
 
-## Development
+## Run locally
+- Install: `npm install`
+- Start: `npm run dev`
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+## Notes
+- Mobile-first layout with a bottom navigation bar.
+- The app opens with sample demo data; use "Reset month" on the Month-End screen for a fresh Day 1 with ₹10,000.
